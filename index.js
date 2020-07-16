@@ -1,9 +1,9 @@
 var guessCount;
-var worldList=["test"];//TODO fill out word list
+var wordList=["test"];//TODO fill out word list
 var chosenWord="";
 var unpopulatedWord =[];
 window.
-document.addEventListener("keydown",playerGuess,checkState,false);
+document.addEventListener("keydown",playerGuess,false);
 
 function setup() {
     var chosenWord=wordList[Math.floor(Math.random() * worldList.length)];
@@ -16,13 +16,30 @@ function setup() {
 
 function playerGuess(event) {
     if(chosenWord.includes(event.key)) {
+
         unpopulatedWord[chosenWord.indexOf(event.key)] = event.key
+        checkState()
     } else {
+        checkState();
         guessCount--;
     }
     console.log(unpopulatedWord);
 }
 
 function checkState() {
-    
+    var counter=0;
+    for (let i = 0; i < chosenWord.length; i++) {
+        if(chosenWord[i]===unpopulatedWord[i]) {
+            counter++;
+        } 
+    }
+    if (counter === chosenWord.length) {
+        alert("You win!");
+        setup();
+    }
+    //check whether or not the the player has lost
+    if(guessCount<=0) {
+        alert("You lost. The word was " + chosenWord + ".");
+        setup();
+    } 
 }
