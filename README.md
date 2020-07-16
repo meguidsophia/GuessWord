@@ -1,2 +1,2 @@
 # GuessWord
-# this is the hang man doc
+# this is the hangman doc !
