@@ -6,7 +6,8 @@ window.
 document.addEventListener("keydown",playerGuess,false);
 
 function setup() {
-    var chosenWord=wordList[Math.floor(Math.random() * worldList.length)];
+    //the error from previously was becuse I was doing var chosenWord insted of modifying the existing chosenWord
+    chosenWord=wordList[Math.floor(Math.random() * worldList.length)];
     for (let i = 0; i < chosenWord.length; i++) {
         unpopulatedWord[i]="";
     }
